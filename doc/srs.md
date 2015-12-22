@@ -1,4 +1,4 @@
-# Eärendil Software Requirements Specifications (SRS)
+# Eärendil Software Requirements Specifications
 
 # 1 Introduction
 
@@ -11,11 +11,15 @@ This document defines the functional requirements of the Eärendil library. The 
 ## 1.2 Definitions
 
 <dl>
+<dt>Deserialize</dt>
+<dd>Translate a UBX message from the serial array format described in the UBX protocol to a Python data object or class.</dd>
+
+<dt>Serialize</dt>
+<dd>Translate a Python data object or class to a UBX message in the serial array format described in the UBX protocol.</dd>
+
 <dt>UBX Data</dt>
 <dd>Data that is encapsulated in a UBX protocol message format.</dd>
-
-<dt>Deserialize</dt>
-<dd>Translate a UBX message from the serial array format described in the UBX protocol to a Python data object or class, capable of being programmatically manipulated using 
+</dl>
 
 ## 1.3 System Overview
 
