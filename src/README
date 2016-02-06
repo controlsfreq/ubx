@@ -1,0 +1,20 @@
+########
+Eärendil
+########
+
+A library for parsing, manipulating, and generating GNSS receiver data and commands.
+
+Also includes command line tools for interacting with some GPS receivers over a serial port.
+
+Documentation
+=============
+
+Requirements
+------------
+
+See the Software Requirements Specification (SRS) document: `doc/source/srs.rst <doc/source/srs.rst>`
+
+Design
+------
+
+See the Software Design Description (SDD) document: `doc/source/sdd.rst <doc/source/sdd.rst>`
