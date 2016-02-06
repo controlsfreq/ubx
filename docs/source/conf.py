@@ -51,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Eärendil'
+project = 'Earendil'
 copyright = '2016, Liam Bucci'
 author = 'Liam Bucci'
 
