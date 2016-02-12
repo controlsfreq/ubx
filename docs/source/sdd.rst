@@ -73,10 +73,13 @@ NMEA, UBX, and Tools. Here we'll break down the structure further.
 3.1.1 The Core Package
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The Core package contains base classes and functions  throughout rest of the library.
-This includes helper functions and classes that are valuable to all packages in the library.
+The Core package contains base classes, functions, and helper code that is used throughout rest of
+the library.
 
-Base class
+3.1.1.1 Base Classes
+""""""""""""""""""""
+
+
 
 * ``dump()``
 * ``load()``
