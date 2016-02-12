@@ -1,3 +1,5 @@
+.. _sdd:
+
 ###########################
 Software Design Description
 ###########################
@@ -12,64 +14,92 @@ Software Design Description
 1 Introduction
 ==============
 
-Provides an overview of the entire SDD.
-
 1.1 Purpose
 -----------
 
-Delineate the purpose of the SDD.
-Specify intended audience.
-
-Example: This document is intended to layout the software application design of the <insert name> as well as the background, context, and rationale for that design. It is written for an Airware developer audience and may contain technical descriptions and Airware specific terminology.
+This document is intended to layout the Eärendil library design as well as the background, context,
+and rationale for that design. The intended audience is developers and technical users wishing to
+either utilize the Eärendil library for their own projects or to enhance and expand the library
+itself.
 
 1.2 Definitions
 ---------------
 
-Provide definitions of all terms, acronyms, and abbreviations.
-May reference an appendix.
+Also, see definitions in the :ref:`srs`.
 
 1.3 Overview
 ------------
 
-Short summary of system.
-Identify software product(s) to be produced by name.
-Explain succinctly what the software product(s) will do, including a very general description of the implementation.
-Describe the application of the software being described, including relevant benefits, objectives, and goals.
+The Eärendil library is composed of a series of Python packages and modules. The packages each
+contain a closely related set of modules, for instance all NMEA specific code. The code in these
+packages may be used to either generate and serialize GNSS related data objects for transmission to
+a receiver or to deserialize and manipulate GNSS data captured from a receiver.
+
+The Eärendil library also contains several packages of utility code that may be helpful in the
+manipulation of GNSS data.
 
 1.4 References
 --------------
 
-List all references used in the creation of the SRS.
-May reference an appendix.
-
 1. My favorite reference: http://example.com
 2. My second favorite reference: http://en.wikipedia.com
+
+Also, see references in the :ref:`srs`.
 
 2 System Overview
 =================
 
-Describe the entire system and how the product(s) fit into that system.
-High-level, system diagrams are very useful here (especially showing where the product interfaces with other system components).
+The Eärendil library is composed of four packages:
+
+* Core  - Core functionality used commonly throughout the rest of the library.
+* NMEA  - NMEA serialization, deserialization, manipulation, and data objects.
+* UBX   - U-blox UBX protocol and PUBX sentence serialization, deserialization, manipulation, and
+  data objects.
+* Tools - Useful GNSS data manipulation functions.
+
+Alongside the library, example and testing code (both unit and functional tests) is maintained.
+This code is not distributed directly with the library, however, it is made available as separate
+packages for those interested in installing and running them.
 
 3 Specific Architecture
 =======================
 
-Describe the structure of the design.
-
 3.1 Architectural Design
 ------------------------
 
-Describe the high-level structure of the design including all components.
-What are the basic functions of each component?
+From the overview above the basic structure of the library is given, with four packages: Core,
+NMEA, UBX, and Tools. Here we'll break down the structure further.
 
-3.2 Decomposition Description
------------------------------
+3.1.1 The Core Package
+^^^^^^^^^^^^^^^^^^^^^^
 
-Describe in greater detail how the components interact.
-How does data flow through the product?
-Decomposition diagrams, sequence diagrams, data flow diagrams, and hierarchy diagrams are excellent here.
+The Core package contains base classes and functions  throughout rest of the library.
+This includes helper functions and classes that are valuable to all packages in the library.
 
-3.3 Design Rationale
+Base class
+
+* ``dump()``
+* ``load()``
+
+3.1.2 The NMEA Package
+^^^^^^^^^^^^^^^^^^^^^^
+
+The NMEA package is dedicated to serializing, deserializing, and storing GNSS data found in NMEA
+sentences. Each NMEA sentence is represented by one module (or python file) with a single class
+which stores the data present in that sentence. Every NMEA sentence class also contains the
+following functions:
+
+* ``serialize()``   - Converts the data contained in the class to an NMEA sentence in string form.
+* ``deserialize()`` - Parses a provided NMEA sentence in string form and stores the data inside the
+  class. This data may then be accessed via accessors.
+
+3.1.3 The UBX Package
+^^^^^^^^^^^^^^^^^^^^^
+
+3.1.4 The Tools Package
+^^^^^^^^^^^^^^^^^^^^^^^
+
+3.2 Design Rationale
 --------------------
 
 Why did you choose the design you did?

@@ -1,3 +1,5 @@
+.. _srs:
+
 ####################################
 Software Requirements Specifications
 ####################################
@@ -29,7 +31,7 @@ Deserialize
   Translate a GNSS message from a serial format, such as UBX or NMEA, to a Python data object or
   class.
 
-NMEA Strings
+NMEA Sentences
   Standardized, human-readable strings containing GNSS and location data defined by the National
   Marine Electronics Association.
 
@@ -46,7 +48,7 @@ UBX
 The Eärendil library provides functionality for serializing, deserializing, parsing, and
 manipulating GNSS data objects. These objects include:
 
-* Standard NMEA strings
+* Standard NMEA sentences
 * u-blox UBX protocol
 * u-blox PUBX protocol
 
@@ -62,9 +64,10 @@ receivers via a serial port as well as doing post processing of data via log fil
 1.4 References
 --------------
 
-1. NMEA 0183: https://en.wikipedia.org/wiki/NMEA_0183
+1. Wikipedia - NMEA 0183: https://en.wikipedia.org/wiki/NMEA_0183
 2. u-blox 7 Receiver Description: https://www.u-blox.com/sites/default/files/products/documents/u-blox7-V14_ReceiverDescrProtSpec_(GPS.G7-SW-12001)_Public.pdf
 3. IEEE 29148-2011: https://standards.ieee.org/findstds/standard/29148-2011.html
+4. GPS Information - NMEA Data: http://www.gpsinformation.org/dale/nmea.htm
 
 2 Overall Description
 =====================
@@ -196,7 +199,83 @@ None
 3.3 Design Constraints
 ----------------------
 
-None
+.. _REQ-0012:
+
+REQ-0012
+  The following GNSS related NMEA sentences shall be supported:
+
+  * ``GPDTM`` - Datum reference
+  * ``GPGBS`` - GNSS satellite fault detection
+  * ``GPGGA`` - Fix information
+  * ``GPGLL`` - Lat/Lon data
+  * ``GPGNS`` - GNSS fix data
+  * ``GPGRS`` - GPS Range Residuals
+  * ``GPGSA`` - Overall Satellite data
+  * ``GPGST`` - GPS Pseudorange Noise Statistics
+  * ``GPGSV`` - Detailed Satellite data
+  * ``GPRMC`` - Recommended minimum data for gps
+  * ``GPTXT`` - Text transmission
+  * ``GPVTG`` - Vector track an Speed over the Ground
+  * ``GPZDA`` - Date and Time
+
+.. _REQ-0013:
+
+REQ-0013
+  The following u-blox PUBX NMEA sentences shall be supported:
+
+  * ``CONFIG``   - Set Protocols and Baudrate
+  * ``POSITION`` - Lat/Long Position Data
+  * ``RATE``     - Set NMEA message output rate
+  * ``SVSTATUS`` - Satellite Status
+  * ``TIME``     - Time of Day and Clock Information
+
+.. _REQ-0014:
+
+REQ-0014
+  The following u-blox UBX configuration messages shall be supported:
+
+  * ``CFG-ANT``   - Antenna Control Settings
+  * ``CFG-CFG``   - Clear, Save and Load configurations
+  * ``CFG-DAT``   - User-defined Datum
+  * ``CFG-GNSS``  - GNSS system configuration
+  * ``CFG-INF``   - Information message configuration
+  * ``CFG-ITFM``  - Jamming/Interference Monitor configuration.
+  * ``CFG-LOGFILTER`` - Data Logger Configuration
+  * ``CFG-MSG``   - Set Message Rate(s)
+  * ``CFG-NAV5``  - Navigation Engine Settings
+  * ``CFG-NAVX5`` - Navigation Engine Expert Settings
+  * ``CFG-NMEA``  - NMEA protocol configuration
+  * ``CFG-NVS``   - Clear, Save and Load non-volatile storage data
+  * ``CFG-PM2``   - Extended Power Management configuration
+  * ``CFG-PRT``   - Port Configuration for UART/USB/SPI/DDC Port
+  * ``CFG-RATE``  - Navigation/Measurement Rate Settings
+  * ``CFG-RINV``  - Contents of Remote Inventory
+  * ``CFG-RST``   - Reset Receiver / Clear Backup Data Structures
+  * ``CFG-RXM``   - RXM configuration
+  * ``CFG-SBAS``  - SBAS Configuration
+  * ``CFG-TP5``   - Time Pulse Parameters
+  * ``CFG-USB``   - USB Configuration
+
+.. _REQ-0015:
+
+REQ-0015
+  The following u-blox UBX navigation messages shall be supported:
+
+  * ``NAV-AOPSTATUS`` - AssistNow Autonomous Status
+  * ``NAV-CLOCK``     - Clock Solution
+  * ``NAV-DGPS``      - DGPS Data Used for NAV
+  * ``NAV-DOP``       - Dilution of precision
+  * ``NAV-POSECEF``   - Position Solution in ECEF
+  * ``NAV-POSLLH``    - Geodetic Position Solution
+  * ``NAV-PVT``       - Navigation Position Velocity Time Solution
+  * ``NAV-SBAS``      - SBAS Status Data
+  * ``NAV-SOL``       - Navigation Solution Information
+  * ``NAV-STATUS``    - Receiver Navigation Status
+  * ``NAV-SVINFO``    - Space Vehicle Information
+  * ``NAV-TIMEGPS``   - GPS Time Solution
+  * ``NAV-TIMEUTC``   - UTC Time Solution
+  * ``NAV-VELECEF``   - Velocity Solution in ECEF
+  * ``NAV-VELNED``    - Velocity Solution in NED
 
 3.4 Software System Attributes
 ------------------------------
